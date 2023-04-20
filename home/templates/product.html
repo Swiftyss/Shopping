@@ -1,0 +1,50 @@
+{% extends 'base.html' %} 
+
+{% load static %}
+
+{% block title %} Product{% endblock title %}
+
+{% block header1 %} {% include 'header1.html' %}{% endblock header1 %}
+
+{% block header %} {% include 'header.html' %}{% endblock header %}
+
+{% block carousel %} {% include 'carousel.html' %}{% endblock carousel %}
+
+{% block content %}
+
+  <div class="container mt-5 bg-light p-5">
+    <h2 class="produ text-center">Our Products</h2>
+    <div class="row justify-content-center gy-3">
+      
+      {% if product %}
+         {% for items in product %}
+             <div class="col-10 col-sm-10 col-md-3">
+                <div class="card h-100">
+                  <img src="{{items.img.url}}" class="card-img-top h-100" alt="...">
+                  <div class="card-body">
+                  <h5 class="card-title">{{items.title}} </h5>
+                  <h5 class="card-title">${{items.price}} </h5>
+                  <p class="card-text">{{items.description}} </p>
+
+              
+              {% if items.max_quantity < 1 %}
+                <p class="card-text">Out of stock </p>
+              {% else %}
+                <a href="{% url 'details' items.slug %}" class="btn btn-primary">see More</a>
+              {% endif %}
+
+                  </div>
+                </div>
+            </div>
+         {% endfor %}
+      {% endif %}
+
+    </div>
+</div>
+
+
+{% endblock content %}
+
+{% block contact %} {% include 'contact.html' %}{% endblock contact %}
+
+{% block footer %} {% include 'footer.html' %}{% endblock footer %}

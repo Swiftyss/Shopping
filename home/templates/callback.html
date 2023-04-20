@@ -1,0 +1,36 @@
+{% extends 'base.html' %} 
+
+{% load static %}
+
+{% block title %}{{details.title}} {% endblock title %}
+
+{% block header1 %} {% include 'header1.html' %}{% endblock header1 %}
+
+{% block header %} {% include 'header.html' %}{% endblock header %}
+
+{% block carousel %} {% include 'carousel.html' %}{% endblock carousel %}
+
+{% block content %}
+
+<div class="container-fluid">
+  <div class=" row justify-content-center">
+      <div class="col-12 col-sm-3"></div>
+      <div class="col-12 col-sm-3">
+          <div class="container">
+              <h2>Dear {{user.username}} </h2>
+              <h5> Your payment for your order was successful!</h5>
+
+              <p>Thank you for your patronage,we look forward
+              to doing more business with you and do believe your order in 
+              shortest time possible....</p>
+              
+          </div>
+      </div>
+      <div class="col-12 col-sm-3"></div>
+  </div>
+
+{% endblock content %}
+
+{% block contact %} {% include 'contact.html' %}{% endblock contact %}
+
+{% block footer %} {% include 'footer.html' %}{% endblock footer %}

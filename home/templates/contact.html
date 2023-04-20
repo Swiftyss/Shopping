@@ -1,0 +1,46 @@
+
+<div class="container-fluid" id="contact">
+    <div class="row justify-content-center">
+      <h2 class="prod text-center text-capitalize mt-5 mb-5">Contact Us</h2>
+        <div class="col-10 col-md-5">
+            <div class="map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.3831574690876!2d3.3444004141936006!3d6.599213024110757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b922f8081dc31%3A0xbf7718ea315c63e!2s2b%20Yinusa%20Adeniji%20St%2C%20Allen%20100271%2C%20Ikeja%2C%20Lagos!5e0!3m2!1sen!2sng!4v1677496936496!5m2!1sen!2sng" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+        <div class="col-10 col-md-5">
+          <div class="cform">
+            <form action="{% url 'contact' %}" method= "POST">
+            {% csrf_token %}
+              <div class="row justify-content-center">
+                <div class="col-12 col-md-6">
+                  <div class="mb-3">
+                    <label for="exampleInputText1" class="form-label">First Name</label>
+                    <input type="Text"name='firstName' class="form-control" id="exampleInputText1" aria-describedby="emailHelp">
+                  </div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <div class="mb-3">
+                    <label for="exampleInputText1" class="form-label">Last Name</label>
+                    <input type="Text" name='lastName' class="form-control" id="exampleInputText1" aria-describedby="emailHelp">
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputText1" class="form-label">Subject</label>
+                <input type="Text" name='subject' class="form-control" id="exampleInputText1" aria-describedby="emailHelp">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input type="email" name='email' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputText1" class="form-label">Enter Message</label>
+                <textarea name="message" class="form-control" id="" cols="30" rows="10"></textarea>
+              </div>
+              
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+        </div>
+    </div>
+  </div>

@@ -1,0 +1,49 @@
+{% extends 'base.html' %} 
+
+{% load static %}
+
+{% block title %}{{details.title}} {% endblock title %}
+
+{% block header1 %} {% include 'header1.html' %}{% endblock header1 %}
+
+{% block header %} {% include 'header.html' %}{% endblock header %}
+
+{% block carousel %} {% include 'carousel.html' %}{% endblock carousel %}
+
+{% block content %}
+
+<div class="container mt-5 md-5">
+  <div class="row justify-content-center">
+    <div class="col-10 col-md-6">
+      <div class="name">
+        <img src="{{details.img.url}}" class="w-100" alt="">
+      </div>
+    </div>
+  
+  <div class="col-10 col-md-6">
+    <div class="williams">
+      <h2>About </h2>
+      <p>Product:{{details.title}} </p>
+      <p>Brand:{{details.brand}} </p>
+      <h3> </h3>
+      <p>Description:{{details.description}}</p>
+      
+
+      <p>Price:${{details.price}} </p>
+      <form action="{% url 'shopcart' %}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="product_id" value="{{details.id}}">
+        <input type="number" name="quantity" value="1" min="{{details.min_quantity}}" max="{{details.max_quantity}}">
+        <button type="submit" class="btn btn-primary">Add to Cart</button>
+      </form>
+         
+    </div>
+  </div>
+ </div>
+</div>
+
+{% endblock content %}
+
+{% block contact %} {% include 'contact.html' %}{% endblock contact %}
+
+{% block footer %} {% include 'footer.html' %}{% endblock footer %}

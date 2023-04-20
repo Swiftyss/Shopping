@@ -1,0 +1,50 @@
+{% extends 'base.html' %} 
+
+{% load static %}
+
+{% block title %} Profile Update {% endblock title %}
+
+{% block header1 %} {% include 'header1.html' %}{% endblock header1 %}
+
+{% block header %} {% include 'header.html' %}{% endblock header %}
+
+{% block carousel %} {% include 'carousel.html' %}{% endblock carousel %}
+
+{% block content %}
+
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-5">
+            <img src="{{profile.pix.url}}" class="w-75" alt="">
+            <h6 class=" pt-3 text-capitalize">User: Team EliteDev</h6>
+            <ul class="list-unstyled mt-5">
+              <li class="mb-3"><a href="{% url 'index' %}" class="btn w-75 btn-outline-primary">Home</a></li>
+              <li class="mb-3"><a href="{% url 'profile' %}" class="btn w-75 btn-outline-primary">Profile</a></li>
+              <li class="mb-3"><a href="{% url 'profile_update' %}" class="btn w-75 btn-outline-primary">Profile Update</a></li>
+              <li class="mb-3"><a href="" class="btn w-75 btn-outline-primary">Shopcart</a></li>
+              <li class="mb-3"><a href="{% url 'password' %}" class="btn w-75 btn-outline-primary">Password Change</a></li>
+              
+            </ul>
+        </div>
+        <div class="col-12 col-md-7">
+            <h2 class="text-center">User Profile</h2>
+            <div class="cform">
+                <div class="ccform">
+                    <form action="{% url 'profile_update' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                        {{update.as_p}}
+                    <button type="submit" class="btn btn-outline-primary">Update</button>
+                    
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
+
+{% block contact %} {% include 'contact.html' %}{% endblock contact %}
+
+{% block footer %} {% include 'footer.html' %}{% endblock footer %}

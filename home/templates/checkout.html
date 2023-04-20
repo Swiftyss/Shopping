@@ -1,0 +1,142 @@
+{% extends 'base.html' %} 
+
+{% load humanize %}
+
+
+
+{% block title %}Checkout {% endblock title %}
+
+{% block header1 %} {% include 'header1.html' %}{% endblock header1 %}
+
+{% block header %} {% include 'header.html' %}{% endblock header %}
+
+{% block carousel %} {% include 'carousel.html' %}{% endblock carousel %}
+
+{% block content %}
+
+<div class="container mt-5 mb-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-10 col-md-4">
+      <img src="{{profile.pix.url}}" class="w-75" alt="">
+      <ul class="list-unstyled">
+        <li class="mb-3"><a href="{% url 'index' %}" class="btn w-75 btn-outline-primary">Home</a></li>
+        <li class="mb-3"><a href="{% url 'profile' %}" class="btn w-75 btn-outline-primary">Profile</a></li>
+        <li class="mb-3"><a href="{% url 'profile_update' %}" class="btn w-75 btn-outline-primary">Profile Update</a></li>
+        <li class="mb-3"><a href="{% url 'displaycart' %}" class="btn w-75 btn-outline-primary">Shopcart</a></li>
+        <li class="mb-3"><a href="{% url 'password' %}" class="btn w-75 btn-outline-primary">Password Change</a></li>
+        
+      </ul>
+    </div>
+    <div class="col-12 col-sm-10 col-md-8">
+      <div class="row justify-content-center">
+        <div class="col-12">
+          <div class="table-box table-responsive">
+            <h2 class="mb-3 mt-5">Order Summary</h2>
+            <div class="table">
+              <table class="table">
+                <thead>
+                  <th>S/N</th>
+                  <th>Product</th>
+                  <th>Quantity</th>
+                  <th>Price</th>
+                  <th>Amount</th>
+                </thead>
+  
+                <tbody>
+                  {% if trolley %}
+                
+                  {% for items in trolley %}
+                  <tr>
+                    <td>{{items.id}}</td>
+                    <td><img src="{{items.product.img.url}}" width="30px" height="30px" alt=""></td>
+                    <td>{{items.product.title}}</td>
+                    
+                    <td>{{items.quantity}} </td>
+                    <td>{{items.product.price|floatformat:2|intcomma}} </td>
+                    <td>{{items.amount|floatformat:2|intcomma}} </td>
+                  </tr> 
+                    
+                  {% endfor %}
+                    
+                  
+                {% endif %}
+                <tbody>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td>Total:{{total|floatformat:2|intcomma}} </td>
+                    </tr>
+                  </tbody>
+
+                </table>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <h2 class="mt-3">Delivery Info</h2>
+          <div class="cform">
+            <div class="ccform">
+              <form action="{% url 'pay' %}" method="POST">
+              {% csrf_token %}
+                <div class="form-floating mb-3">
+                  <input type="text" name="first_name" value="{{user.first_name}}" class="form-control" id="floatingInput" placeholder="name@example.com">
+                  <label for="floatingInput">First Name</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="text" name="last_name" value="{{user.last_name}}" class="form-control" id="floatingInput" placeholder="name@example.com">
+                  <label for="floatingInput">Last Name</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="email" name="email" value={{user.email}} class="form-control" id="floatingInput" placeholder="name@example.com">
+                  <label for="floatingInput">Email Address</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="text" name="phone" value="{{user.phone}}" class="form-control" id="floatingInput" placeholder="name@example.com">
+                  <label for="floatingInput">Phone Number</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="text" name="address" value="{{profile.address}}" class="form-control" id="floatingInput" placeholder="name@example.com">
+                  <label for="floatingInput">Delivery Address</label>
+                </div>
+                <input type="hidden" value="{{total}}" name="total">
+                <button type="submit" class="btn w-25 btn-primary">Pay</button>
+               
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+      
+    </div>
+  </div>
+ </div>
+ 
+ {% endblock content %}
+
+ {% block contact %} {% include 'contact.html' %}{% endblock contact %}
+ 
+ {% block footer %} {% include 'footer.html' %}{% endblock footer %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

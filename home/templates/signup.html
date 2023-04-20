@@ -1,0 +1,108 @@
+{% extends 'base.html' %} 
+
+{% load static %}
+
+{% block title %} Signup {% endblock title %}
+
+{% block header1 %} {% include 'header1.html' %}{% endblock header1 %}
+
+{% block header %} {% include 'header.html' %}{% endblock header %}
+
+{% block carousel %} {% include 'carousel.html' %}{% endblock carousel %}
+
+{% block content %}
+
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-5">
+            <img src="{% static '' %}Image/welcome.jpg" class="w-100 h-100" alt="">
+        </div>
+        <div class="col-12 col-md-7">
+            <h2 class="text-center">Signup</h2>
+            <div class="cform">
+                <div class="ccform">
+                    <form action="{% url 'signup' %}" method="POST">
+                    {% csrf_token %}
+                    {% comment %} {% csrf_token %} {% endcomment %}
+                        <div class="row justify-content-center">
+                            <div class="col-12 col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="text" name="username" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                    <label for="floatingInput">username</label>
+                                </div>
+                              
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="text" name="first_name" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                    <label for="floatingInput">First Name</label>
+                                </div>
+                              
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="text" name="last_name" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                    <label for="floatingInput">Last Name</label>
+                                </div>
+                              
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                    <label for="floatingInput">Email Address</label>
+                                </div>
+                              
+                            </div>
+                       
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" name="phone" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <label for="floatingInput">Phone Number</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" name="gender" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <label for="floatingInput">Gender</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" name="address" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <label for="floatingInput">Home Address</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" name="state" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <label for="floatingInput">State</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="date" name="dob" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <input type="hidden" name="pix" value="pix/avatar.jpg" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            
+                            <label for="floatingInput">Date of Birth</label>
+                        </div>
+                        
+                        <div class="form-floating mb-3">
+                            <input type="text" name="nationality" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <label for="floatingInput">Nationality</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" name="password1" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <label for="floatingInput">password</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" name="password2" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <label for="floatingInput"> Confirm password</label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Signup</button>
+                        <a href="{% url 'signin' %}" class="btn btn-info">signin</a>
+                        
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
+
+{% block contact %} {% include 'contact.html' %}{% endblock contact %}
+
+{% block footer %} {% include 'footer.html' %}{% endblock footer %}

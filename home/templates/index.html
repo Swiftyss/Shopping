@@ -1,0 +1,73 @@
+{% extends 'base.html' %} 
+
+{% load static %}
+
+{% block title %} |Home_page{% endblock title %}
+
+{% block header1 %} {% include 'header1.html' %}{% endblock header1 %}
+
+{% block header %} {% include 'header.html' %}{% endblock header %}
+
+{% block carousel %} {% include 'carousel.html' %}{% endblock carousel %}
+
+{% block content %}
+
+<div class="container-fluid mt-5 mb-5" id="about">
+    <h2 class="text-center prod mt-4 mb-5">Welcome to ShopByElite</h2>
+    <div class="row justify-content-center">
+        <div class="col-10 col-md-5">
+        <img src="{% static '' %}Image/lady-banner.webp" class="w-100 h-100" alt="">
+    </div>
+    <div class="col-10 col-md-5">
+        <div class="w-100 lib">
+            <h2>Our Objective</h2>
+            <p>At ShoesByElite, we believe that footwear is more than just an accessory.
+                 We strive to provide high-quality shoes that not only look great but also 
+                 feel great. We value comfort, durability, and style, and we are committed 
+                 to offering our customers the best shopping experience possible.
+                  Our goal is to help you step out with confidence and feel great
+                   in every pair of shoes you purchase from us.</p>
+            <p>"Step into style with our trendy footwear that blends fashion and comfort for every occasion.
+                 Shop now and put your best foot forward!"</p>
+        </div>
+    </div>
+   
+  </div>
+  <div class="container mt-5 bg-light p-5">
+    <h2 class="produ text-center">Our Category</h2>
+    <div class="row justify-content-center gy-3">
+      
+      {% if category %}
+         {% for items in category %}
+             <div class="col-10 col-sm-10 col-md-4">
+                <div class="card h-100">
+                  <img src="{{items.img.url}}" class="card-img-top h-100" alt="...">
+                  <div class="card-body">
+                  <h5 class="card-title">{{items.title}} </h5>
+                  <p class="card-text">{{items.description}} </p>
+                  <a href="#" class="btn btn-primary">Read More</a>
+                  </div>
+                </div>
+            </div>
+         {% endfor %}
+      {% endif %}
+
+    </div>
+</div>
+<div class="container-fluid" id="service">
+    <div class="cave">
+        <h2 class="mb-3 mt-2 produ text-center">Our Services</h2>
+        <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Eaque est illum dolores, amet soluta facere ad voluptatum totam accusamus
+        </p>
+        <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block contact %} {% include 'contact.html' %}{% endblock contact %}
+
+{% block footer %} {% include 'footer.html' %}{% endblock footer %}
