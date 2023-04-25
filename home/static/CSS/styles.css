@@ -14,6 +14,7 @@
 }
 body{
     background: var(--body--);
+    width: 100%;
 }
 .fa-moon{
     color: var(--text-color--);
@@ -182,7 +183,7 @@ body{
 }
 
 .cave{
-    background: url(/Image/lady-banner.webp);
+    background: url(../Image/lady-banner.webp);
     background-repeat: no-repeat;
     background-position: fixed;
     background-size: cover;
@@ -227,6 +228,7 @@ body{
 .footer{
     background: goldenrod;
     padding: 2rem;
+    width: 100%;
 }
 .footer ul li a{
     text-align: center;
